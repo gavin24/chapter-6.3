@@ -21,16 +21,19 @@ public class AddScreen extends AppCompatActivity {
         species = (EditText)findViewById(R.id.species);
         age = (EditText)findViewById(R.id.age);
         country = (EditText)findViewById(R.id.country);
-        name.setText(t.getStringExtra("name"));
-        species.setText(t.getStringExtra("species"));
-        age.setText(t.getStringExtra("age"));
-        country.setText(t.getStringExtra("country"));
+
     }
 
-    protected void onClick(View v) {
-
+    public void onClick(View v) {
+      /*  name.setText(t.getStringExtra("name"));
+        species.setText(t.getStringExtra("species"));
+        age.setText(t.getStringExtra("age"));
+        country.setText(t.getStringExtra("country"));*/
         Intent i = new Intent(this,SubmitActivity.class);
-
+        i.putExtra("animalName",name.getText().toString());
+        i.putExtra("animalAge",age.getText().toString());
+        i.putExtra("animalSpecies",species.getText().toString());
+        i.putExtra("animalCountry",country.getText().toString());
         startActivity(i);
     }
 

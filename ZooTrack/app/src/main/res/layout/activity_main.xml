@@ -36,7 +36,7 @@
         android:id="@+id/button5"
         android:onClick="testClick"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
+
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -19,7 +19,7 @@ public class ViewActivity extends Activity {
     private boolean isBound = false;
     private AnimalService activateAccountService;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         ArrayList l = new ArrayList();

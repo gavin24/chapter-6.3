@@ -13,24 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView2"
-        android:layout_marginLeft="108dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="500dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:singleLine="true"
-        android:text="Animal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/name"
         android:layout_below="@+id/age"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="54dp"
+        android:text="Name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,29 +27,28 @@
         android:id="@+id/species"
         android:layout_below="@+id/name"
         android:layout_toRightOf="@+id/name"
-        android:layout_toEndOf="@+id/name" />
+        android:layout_toEndOf="@+id/name"
+        android:text="Species" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/age"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:text="Age" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/country"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignRight="@+id/species"
-        android:layout_alignEnd="@+id/species"
-        android:layout_alignBottom="@+id/species"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/species"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="52dp"
+        android:text="Country" />
 
     <Button
         android:layout_width="wrap_content"

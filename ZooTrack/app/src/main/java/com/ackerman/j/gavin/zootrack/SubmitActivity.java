@@ -7,7 +7,9 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.ackerman.j.gavin.zootrack.Config.Util.App;
 import com.ackerman.j.gavin.zootrack.Domain.Animal;
@@ -18,25 +20,31 @@ public class SubmitActivity extends AppCompatActivity {
     private AnimalServiceImpl activateService;
     private boolean isBound = false;
     private AnimalService activateAccountService;
-    EditText name,country,age,species;
+    TextView name,country,age,species;
     Intent t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);
-        name = (EditText)findViewById(R.id.name);
-        species = (EditText)findViewById(R.id.species);
-        age = (EditText)findViewById(R.id.age);
-        country = (EditText)findViewById(R.id.country);
-        name.setText(t.getStringExtra("name"));
-        species.setText(t.getStringExtra("species"));
-        age.setText(t.getStringExtra("age"));
-        country.setText(t.getStringExtra("country"));
-        Intent intent = new Intent(this, AnimalServiceImpl.class);
-        App.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        name = (TextView)findViewById(R.id.name);
+        species = (TextView)findViewById(R.id.species);
+        age = (TextView)findViewById(R.id.age);
+        country = (TextView)findViewById(R.id.country);
+       String animalName = getIntent().getStringExtra("animalName");
+       String animalCountry = getIntent().getStringExtra("animalCountry");
+       String animalSpecies = getIntent().getStringExtra("animalSpecies");
+       String animalAge = getIntent().getStringExtra("animalAge");
+        name.setText(animalName);
+        species.setText(animalSpecies);
+        age.setText(animalAge);
+        country.setText(animalCountry);
+
     }
 
-    protected void onClick(Bundle savedInstanceState) {
+    public void onClick(View v) {
+        Intent intent = new Intent(this, AnimalServiceImpl.class);
+        App.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
         String nameText = name.getText().toString();
         int ageText = Integer.parseInt(age.getText().toString());
         String speciesText = species.getText().toString();

@@ -23,19 +23,19 @@ public class MainActivity extends AppCompatActivity {
        // s.addAnimal();
     }
 
-    protected void onClick(View v) {
+    public void onClick(View v) {
 
         Intent i = new Intent(this,AddScreen.class);
 
         startActivity(i);
     }
-    protected void viewClick(View v) {
+    public void viewClick(View v) {
 
         Intent i = new Intent(this,ViewActivity.class);
 
         startActivity(i);
     }
-    protected void testClick(View v) {
+    public void testClick(View v) {
 
         Intent i = new Intent(this,TestActivity.class);
 
