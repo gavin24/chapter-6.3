@@ -97,7 +97,7 @@ public class TicketsRepositoryImpl extends SQLiteOpenHelper implements TicketsRe
         long id = db.insertOrThrow(TABLE_NAME, null, values);
         Tickets insertedEntity = new Tickets.Builder()
                 .copy(entity)
-                .id(new Long(id))
+                .id(new Long(id ))
                 .build();
         return insertedEntity;
     }

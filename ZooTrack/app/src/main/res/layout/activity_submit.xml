@@ -14,41 +14,44 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/name"
-        android:layout_below="@+id/age"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="54dp"
-        android:text="Name" />
+        android:text="Name"
+        android:layout_alignStart="@+id/species"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+       />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/species"
-        android:layout_below="@+id/name"
-        android:layout_toRightOf="@+id/name"
-        android:layout_toEndOf="@+id/name"
-        android:text="Species" />
+        android:text="Species"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/age"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:text="Age" />
+        android:text="Age"
+        android:layout_above="@+id/species"
+        android:layout_alignStart="@+id/species"
+        android:layout_marginBottom="93dp"
+      />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/country"
+        android:text="Country"
+        android:layout_marginTop="73dp"
         android:layout_below="@+id/species"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="52dp"
-        android:text="Country" />
+        android:layout_alignRight="@+id/species"
+
+        android:layout_alignStart="@+id/species"
+      />
 
     <Button
         android:layout_width="wrap_content"

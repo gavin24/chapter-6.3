@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import com.ackerman.j.gavin.zootrack.Config.Util.App;
 import com.ackerman.j.gavin.zootrack.Domain.Animal;
 import com.ackerman.j.gavin.zootrack.Domain.Employee;
 import com.ackerman.j.gavin.zootrack.Repository.EmployeeRepository;
+import com.ackerman.j.gavin.zootrack.Repository.Impl.AnimalRepositoryImpl;
 import com.ackerman.j.gavin.zootrack.Repository.Impl.EmployeeRepositoryImpl;
 import com.ackerman.j.gavin.zootrack.services.EmployeeService;
 
@@ -33,7 +35,7 @@ public class EmployeeServiceImpl extends Service implements EmployeeService {
 
     public EmployeeServiceImpl()
     {
-        repository = new EmployeeRepositoryImpl(this.getApplicationContext());
+        repository = new EmployeeRepositoryImpl(App.getAppContext());
     }
 
     @Override

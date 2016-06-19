@@ -36,27 +36,26 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
     public static final String COLUMN_FOODNAME = "foodname";
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_STOCK = "stock";
-  //  public static final String COLUMN_FOOD = "food";
+
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
-            + COLUMN_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT, "
-         /*   + COLUMN_PRICE + " REAL  NOT NULL , "
-            + COLUMN_FOODNAME + " INTEGER NOT NULL ,"
-            + COLUMN_TYPE + " TEXT  NOT NULL , "
-            + COLUMN_STOCK + " INTEGER  NOT NULL , "*/
+            + COLUMN_ID + " INTEGER PRIMARY KEY  AUTOINCREMENT, "
             + COLUMN_NAME + " TEXT  NOT NULL , "
             + COLUMN_AGE + " INTEGER NOT NULL ,"
              + COLUMN_COUNTRY + " TEXT  NOT NULL , "
              + COLUMN_SPECIES + " TEXT  NULL );";
-          //   + COLUMN_FOOD + " TEXT NOT NULL );";
+
 
 
     public AnimalRepositoryImpl(Context context) {
         super(context, DbConstants.DATABASE_NAME, null, DbConstants.DATABASE_VERSION);
     }
 
+    public AnimalRepositoryImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
     public void open() throws SQLException {
         db = this.getWritableDatabase();
     }
@@ -73,15 +72,11 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
                 TABLE_NAME,
                 new String[]{
                         COLUMN_ID,
-                     /*   COLUMN_PRICE,
-                        COLUMN_FOODNAME,
-                        COLUMN_TYPE,
-                        COLUMN_STOCK,*/
                         COLUMN_NAME,
                          COLUMN_AGE,
                         COLUMN_COUNTRY,
                         COLUMN_SPECIES},
-                     //    COLUMN_FOOD},
+
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
                 null,
@@ -89,23 +84,15 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
                 null,
                 null);
         if (cursor.moveToFirst()) {
-       /*     Food food = new Food.Builder()
-                    .name(cursor.getString(cursor.getColumnIndex(COLUMN_FOODNAME)))
-                    .price(cursor.getFloat(cursor.getColumnIndex(COLUMN_PRICE)))
-                    .type(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)))
-                    .stock(cursor.getInt(cursor.getColumnIndex(COLUMN_STOCK)))
-                    .build();
-*/
 
             final Animal animal = new Animal.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
-                  //  .food(food)
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .age(cursor.getInt(cursor.getColumnIndex(COLUMN_AGE)))
                     .Country(cursor.getString(cursor.getColumnIndex(COLUMN_COUNTRY)))
                     .species(cursor.getString(cursor.getColumnIndex(COLUMN_SPECIES)))
                     .build();
-            // Animal animal = new Animal.Builder(id).name(name).species(species).age(age).Country(Country).food(food)
+
             return animal;
         } else {
             return null;
@@ -119,10 +106,7 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-        /*values.put(COLUMN_FOODNAME, entity.getName());
-        values.put(COLUMN_STOCK, entity.getAge());
-        values.put(COLUMN_TYPE, entity.getCountry());
-        values.put(COLUMN_PRICE, entity.getSpecies());*/
+
         values.put(COLUMN_NAME, entity.getName());
         values.put(COLUMN_AGE, entity.getAge());
         values.put(COLUMN_COUNTRY, entity.getCountry());
@@ -140,10 +124,7 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-      /*  values.put(COLUMN_FOODNAME, entity.getName());
-        values.put(COLUMN_STOCK, entity.getAge());
-        values.put(COLUMN_TYPE, entity.getCountry());
-        values.put(COLUMN_PRICE, entity.getSpecies());*/
+
         values.put(COLUMN_NAME, entity.getName());
         values.put(COLUMN_AGE, entity.getAge());
         values.put(COLUMN_COUNTRY, entity.getCountry());
@@ -175,16 +156,10 @@ public class AnimalRepositoryImpl extends SQLiteOpenHelper implements AnimalRepo
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
-              /*  Food food = new Food.Builder()
-                        .name(cursor.getString(cursor.getColumnIndex(COLUMN_FOODNAME)))
-                        .price(cursor.getFloat(cursor.getColumnIndex(COLUMN_PRICE)))
-                        .type(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)))
-                        .stock(cursor.getInt(cursor.getColumnIndex(COLUMN_STOCK)))
-                        .build();
-*/
+
+
                 final Animal animals = new Animal.Builder()
                         .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
-                       // .food(food)
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .age(cursor.getInt(cursor.getColumnIndex(COLUMN_AGE)))
                         .Country(cursor.getString(cursor.getColumnIndex(COLUMN_COUNTRY)))

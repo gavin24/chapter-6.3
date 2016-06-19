@@ -5,5 +5,5 @@ package com.ackerman.j.gavin.zootrack.Config.DbConstants;
  */
 public class DbConstants {
     public static final String DATABASE_NAME="zooDB";
-    public static final int DATABASE_VERSION=1;
+    public static final int DATABASE_VERSION=17;
 }

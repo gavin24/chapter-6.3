@@ -22,50 +22,6 @@ public class SubmitActivity extends AppCompatActivity {
     private AnimalService activateAccountService;
     TextView name,country,age,species;
     Intent t;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_submit);
-        name = (TextView)findViewById(R.id.name);
-        species = (TextView)findViewById(R.id.species);
-        age = (TextView)findViewById(R.id.age);
-        country = (TextView)findViewById(R.id.country);
-       String animalName = getIntent().getStringExtra("animalName");
-       String animalCountry = getIntent().getStringExtra("animalCountry");
-       String animalSpecies = getIntent().getStringExtra("animalSpecies");
-       String animalAge = getIntent().getStringExtra("animalAge");
-        name.setText(animalName);
-        species.setText(animalSpecies);
-        age.setText(animalAge);
-        country.setText(animalCountry);
-
-    }
-
-    public void onClick(View v) {
-        Intent intent = new Intent(this, AnimalServiceImpl.class);
-        App.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        String nameText = name.getText().toString();
-        int ageText = Integer.parseInt(age.getText().toString());
-        String speciesText = species.getText().toString();
-        String countryText = country.getText().toString();
-
-       // super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_submit);
-        Animal animal = new Animal.Builder()
-                .age(ageText)
-                .Country(countryText)
-                .name(nameText)
-                .species(speciesText)
-                .build();//t.getStringExtra("name"),t.getStringExtra("species"),t.getStringExtra("age"),t.getStringExtra("country"));
-
-
-        activateAccountService.addAnimal(animal);//App.getAppContext(),animal);
-        Intent intentLogin = new Intent(this, ViewActivity.class);
-        startActivity(intentLogin);
-        finish();
-    }
-
     private ServiceConnection connection = new ServiceConnection() {
 
         public void onServiceConnected(ComponentName className, IBinder service) {
@@ -78,4 +34,53 @@ public class SubmitActivity extends AppCompatActivity {
             isBound = false;
         }
     };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_submit);
+        Intent intent = new Intent(this, AnimalServiceImpl.class);
+        App.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+
+        activateService = AnimalServiceImpl.getInstance();
+        name = (TextView)findViewById(R.id.name);
+        species = (TextView)findViewById(R.id.species);
+        age = (TextView)findViewById(R.id.age);
+        country = (TextView)findViewById(R.id.country);
+
+       String animalName = getIntent().getStringExtra("animalName");
+       String animalCountry = getIntent().getStringExtra("animalCountry");
+       String animalSpecies = getIntent().getStringExtra("animalSpecies");
+       String animalAge = getIntent().getStringExtra("animalAge");
+
+        name.setText(animalName);
+        species.setText(animalSpecies);
+        age.setText(animalAge);
+        country.setText(animalCountry);
+
+    }
+
+    public void onClick(View v) {
+
+        String nameText = name.getText().toString();
+        int ageText = Integer.parseInt(age.getText().toString());
+        String speciesText = species.getText().toString();
+        String countryText = country.getText().toString();
+
+
+             Animal animal = new Animal.Builder()
+                .age(ageText)
+                .Country(countryText)
+                .name(nameText)
+                .species(speciesText)
+                .build();
+
+
+        activateService.addAnimal(animal);
+
+        Intent intentLogin = new Intent(this, ViewActivity.class);
+        startActivity(intentLogin);
+        finish();
+    }
+
+
 }

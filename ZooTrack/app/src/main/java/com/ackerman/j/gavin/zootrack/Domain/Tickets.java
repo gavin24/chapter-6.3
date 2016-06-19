@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by gavin.ackerman on 2016-04-15.
  */
 public class Tickets implements Serializable {
-    private long id;
+    private Long id;
     private float price;
     private Date day;
     private String type;
@@ -21,7 +21,7 @@ public class Tickets implements Serializable {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class Tickets implements Serializable {
 
 
     public static class Builder{
-        private long id;
+        private Long id;
         private float price;
         private Date day;
         private String type;

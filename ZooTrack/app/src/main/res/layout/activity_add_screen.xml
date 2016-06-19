@@ -23,23 +23,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name"
-        android:text="Name"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/age"
+        android:layout_centerHorizontal="true"
         android:layout_alignStart="@+id/age"
         android:layout_alignRight="@+id/age"
-        android:layout_alignEnd="@+id/age" />
+        android:layout_alignEnd="@+id/age"
+        android:hint="Name" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/species"
         android:inputType="text"
-        android:text="Species"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/editText2"
         android:layout_alignRight="@+id/country"
-        android:layout_alignEnd="@+id/country" />
+        android:layout_alignEnd="@+id/country"
+        android:hint="Species" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -47,23 +48,24 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/age"
-        android:text="Age"
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp" />
+        android:layout_marginTop="52dp"
+        android:hint="Age" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:id="@+id/country"
         android:inputType="text"
         android:layout_above="@+id/button2"
         android:layout_alignLeft="@+id/age"
         android:layout_alignStart="@+id/age"
-        android:text="Country"
         android:layout_marginBottom="103dp"
         android:layout_alignRight="@+id/age"
-        android:layout_alignEnd="@+id/age" />
+        android:layout_alignEnd="@+id/age"
+        android:hint="Country" />
 
     <Button
         android:layout_width="wrap_content"

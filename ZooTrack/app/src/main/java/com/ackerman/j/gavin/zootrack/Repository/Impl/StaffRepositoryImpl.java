@@ -49,8 +49,8 @@ public class StaffRepositoryImpl extends SQLiteOpenHelper implements StaffReposi
             + COLUMN_COUNTRY + " TEXT  NOT NULL , "
             + COLUMN_PASSWORD + " TEXT UNIQUE  NOT NULL, "
             + COLUMN_EMAIL + " TEXT UNIQUE  NOT NULL , "
-            + COLUMN_NAME + " TEXT NOT NULL ),"
-            + COLUMN_WORKDAY + " DATE NOT NULL ; ";
+            + COLUMN_NAME + " TEXT NOT NULL ,"
+            + COLUMN_WORKDAY + " DATE NOT NULL ); ";
 
 
 

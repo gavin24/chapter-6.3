@@ -22,11 +22,11 @@ public class EmployeeRepoTest extends AndroidTestCase {
         // CREATE
         Employee createEntity = new Employee.Builder()
                 .name("Alec")
-                .surname("James")
+                .surname("Jamwwesfgg21fdhdf")
                 .age(34)
                 .Country("SA")
-                .password("w32352d")
-                .email("blah@gmail.com")
+                .password("w32f3552d2")
+                .email("bla1wh12@gmail.com")
                 .build();
         Employee insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -44,9 +44,10 @@ public class EmployeeRepoTest extends AndroidTestCase {
 
         //UPDATE ENTITY
         Employee updateEntity = new Employee.Builder()
-                .id(entity.getId())
+
                 .copy(entity)
-                .name("Peter")
+                .name("Petery")
+                .surname("alex")
                 .build();
         repo.update(updateEntity);
         Employee newEntity = repo.findById(id);

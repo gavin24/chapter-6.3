@@ -2,12 +2,17 @@ package com.ackerman.j.gavin.zootrack.repositoryTests;
 
 import android.test.AndroidTestCase;
 
+import com.ackerman.j.gavin.zootrack.Config.Util.AppUtil;
 import com.ackerman.j.gavin.zootrack.Domain.Schedule;
+import com.ackerman.j.gavin.zootrack.Domain.Show;
 import com.ackerman.j.gavin.zootrack.Repository.Impl.ScheduleRepositoryImpl;
 import com.ackerman.j.gavin.zootrack.Repository.ScheduleRepository;
 
 import junit.framework.Assert;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,14 +21,22 @@ import java.util.Set;
 public class ScheduleRepoTest extends AndroidTestCase {
     private static final String TAG="SETTINGS TEST";
     private Long id;
-
+    private Date day = new Date(14/06/2014);
     public void testCreateReadUpdateDelete() throws Exception {
         ScheduleRepository repo = new ScheduleRepositoryImpl(this.getContext());
         // CREATE    (Long id,List<Show> show,String type, String duration, String coach
+        Show show = new Show.Builder()
+                .name("crazy Babbons")
+                .day(day)
+                .build();
+
+        List<Show> showList = new ArrayList<Show>();
+        showList.add(show);
         Schedule createEntity = new Schedule.Builder()
                 .type("daily")
                 .duration("4 hours")
-                .coach("larry")
+                .coach("andre")
+                .show(showList)
                 .build();
         Schedule insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -43,6 +56,7 @@ public class ScheduleRepoTest extends AndroidTestCase {
         Schedule updateEntity = new Schedule.Builder()
                 .copy(entity)
                 .coach("john")
+                .show(showList)
                 .build();
         repo.update(updateEntity);
         Schedule newEntity = repo.findById(id);

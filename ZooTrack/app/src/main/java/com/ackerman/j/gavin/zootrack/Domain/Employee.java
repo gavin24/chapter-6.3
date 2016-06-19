@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Employee implements Serializable {
     private String name;
-    private long id;
+    private Long id;
     private String surname;
     private int age;
     private String Country;
@@ -20,7 +20,7 @@ public class Employee implements Serializable {
 
 
     public int getAge(){return age;}
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getName(){return name;}
@@ -42,7 +42,7 @@ public class Employee implements Serializable {
     }
 
     public static class Builder{
-        private long id;
+        private Long id;
         private String name;
         private String surname;
         private int age;

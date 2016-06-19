@@ -16,5 +16,5 @@ public interface AnimalService {
     Animal getAnimal(Long d);
     ArrayList<Animal> getAllAnimals( );
 
-    int removeAllAnimals();
+    void removeAllAnimals();
 }

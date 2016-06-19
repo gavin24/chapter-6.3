@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import com.ackerman.j.gavin.zootrack.Config.Util.App;
 import com.ackerman.j.gavin.zootrack.Domain.Animal;
 import com.ackerman.j.gavin.zootrack.Repository.AnimalRepository;
 import com.ackerman.j.gavin.zootrack.Repository.Impl.AnimalRepositoryImpl;
@@ -33,7 +34,7 @@ public class AnimalServiceImpl extends Service implements AnimalService {
 
     public AnimalServiceImpl()
     {
-        repository = new AnimalRepositoryImpl(this.getApplicationContext());
+        repository = new AnimalRepositoryImpl(App.getAppContext());
     }
 
     @Override
@@ -80,8 +81,8 @@ public class AnimalServiceImpl extends Service implements AnimalService {
     }
 
     @Override
-    public int removeAllAnimals() {
-        return repository.deleteAll();
+    public void removeAllAnimals() {
+        repository.deleteAll();
     }
     @Override
     public Animal updateAnimal(Animal animal) {

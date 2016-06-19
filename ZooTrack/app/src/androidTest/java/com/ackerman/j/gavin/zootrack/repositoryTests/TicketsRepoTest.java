@@ -23,8 +23,8 @@ public class TicketsRepoTest extends AndroidTestCase {
         // CREATE
         Tickets createEntity = new Tickets.Builder()
                 .price(56)
-                .day(day)
-                .type("adult")
+                .day(new Date(14/06/2014))
+                .type("child")
                 .build();
         Tickets insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -44,6 +44,7 @@ public class TicketsRepoTest extends AndroidTestCase {
         Tickets updateEntity = new Tickets.Builder()
                 .copy(entity)
                 .type("child")
+                .day(day)
                 .build();
         repo.update(updateEntity);
         Tickets newEntity = repo.findById(id);

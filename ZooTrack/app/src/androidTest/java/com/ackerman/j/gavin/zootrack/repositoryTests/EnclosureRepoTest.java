@@ -2,12 +2,15 @@ package com.ackerman.j.gavin.zootrack.repositoryTests;
 
 import android.test.AndroidTestCase;
 
+import com.ackerman.j.gavin.zootrack.Config.Util.AppUtil;
 import com.ackerman.j.gavin.zootrack.Domain.Enclosure;
+import com.ackerman.j.gavin.zootrack.Domain.Show;
 import com.ackerman.j.gavin.zootrack.Repository.EnclosureRepository;
 import com.ackerman.j.gavin.zootrack.Repository.Impl.EnclosureRepositoryImpl;
 
 import junit.framework.Assert;
 
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -20,10 +23,15 @@ public class EnclosureRepoTest extends AndroidTestCase {
     public void testCreateReadUpdateDelete() throws Exception {
         EnclosureRepository repo = new EnclosureRepositoryImpl(this.getContext());
         // CREATE
+        Show show = new Show.Builder()
+                .name("boby")
+                .day(new Date(2015,06,06))
+                .build();
         Enclosure createEntity = new Enclosure.Builder()
                 .type("steel")
                 .name("fence")
                 .coach("adrian")
+                .show(show)
                 .build();
         Enclosure insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -43,6 +51,7 @@ public class EnclosureRepoTest extends AndroidTestCase {
         Enclosure updateEntity = new Enclosure.Builder()
                 .copy(entity)
                 .type("wood")
+                .show(show)
                 .build();
         repo.update(updateEntity);
         Enclosure newEntity = repo.findById(id);

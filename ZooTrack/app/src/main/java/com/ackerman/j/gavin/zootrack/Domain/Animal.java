@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Animal implements Serializable {
     private String name;
-    private long id;
+    private Long id;
     private String species;
     private int age;
     private String Country;
@@ -19,7 +19,7 @@ public class Animal implements Serializable {
 
 
     public int getAge(){return age;}
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getName(){return name;}
@@ -41,7 +41,7 @@ public class Animal implements Serializable {
     }
 
     public static class Builder{
-        private long id;
+        private Long id;
         private String name;
         private String species;
         private int age;

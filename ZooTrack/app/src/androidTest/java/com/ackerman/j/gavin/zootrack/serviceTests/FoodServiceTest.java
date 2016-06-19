@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.test.AndroidTestCase;
 
+import com.ackerman.j.gavin.zootrack.Config.DbConstants.GlobalContext;
 import com.ackerman.j.gavin.zootrack.Domain.Food;
 import com.ackerman.j.gavin.zootrack.Repository.FoodRepository;
 import com.ackerman.j.gavin.zootrack.Repository.Impl.FoodRepositoryImpl;
@@ -28,8 +29,13 @@ public class FoodServiceTest extends AndroidTestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Intent intent = new Intent(this.getContext(), FoodServiceImpl.class);
-        this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);
+ /*       Intent intent = new Intent(this.getContext(), FoodServiceImpl.class);
+        this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);*/
+
+        Intent intent = new Intent(this.getContext(),FoodServiceImpl.class);
+        GlobalContext.context = this.getContext();
+        foodService = FoodServiceImpl.getInstance();
+        GlobalContext.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
         //Create
         food = new Food.Builder()
                 .name("Chicken")

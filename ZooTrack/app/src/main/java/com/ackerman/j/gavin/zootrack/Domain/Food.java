@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by gavin.ackerman on 2016-04-15.
  */
 public class Food implements Serializable {
-    private long id;
+    private Long id;
     private float price;
     private String name;
     private String type;
@@ -24,7 +24,7 @@ public class Food implements Serializable {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class Food implements Serializable {
         return stock;
     }
     public static class Builder{
-        private long id;
+        private Long id;
         private float price;
         private String name;
         private String type;

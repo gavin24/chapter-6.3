@@ -25,10 +25,7 @@ public class AddScreen extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-      /*  name.setText(t.getStringExtra("name"));
-        species.setText(t.getStringExtra("species"));
-        age.setText(t.getStringExtra("age"));
-        country.setText(t.getStringExtra("country"));*/
+
         Intent i = new Intent(this,SubmitActivity.class);
         i.putExtra("animalName",name.getText().toString());
         i.putExtra("animalAge",age.getText().toString());

@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by gavin.ackerman on 2016-04-15.
  */
 public class Staff implements Serializable {
-    private long id;
+    private Long id;
 
     private List<Employee> employee;
     private Date workDay;
@@ -18,8 +18,8 @@ public class Staff implements Serializable {
 
     public Staff(Builder builder) {
         this.id=builder.id;
-        employee=builder.employee;
-        workDay=builder.workDay;
+        this.employee=builder.employee;
+        this.workDay=builder.workDay;
       /*  startTime=builder.startTime;
         endTime=builder.endTime;*/
     }
@@ -30,7 +30,7 @@ public class Staff implements Serializable {
     public Date getDay() {
         return workDay;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
   /*  public Time getStartTime() {
@@ -42,7 +42,7 @@ public class Staff implements Serializable {
     }*/
 
     public static class Builder{
-        private long id;
+        private Long id;
         private Date workDay;
        /* private Time startTime;
         private Time endTime;*/
@@ -75,7 +75,8 @@ public class Staff implements Serializable {
 
         public Builder copy(Staff value){
             this.id=value.id;
-
+            this.workDay=value.workDay;
+            this.employee = value.employee;
         /*    this.startTime=value.startTime;
             this.endTime=value.endTime;*/
             return this;

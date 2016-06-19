@@ -22,7 +22,7 @@ public class ShowRepoTest extends AndroidTestCase {
         ShowRepository repo = new ShowRepositoryImpl(this.getContext());
         // CREATE    .name(name).day(showDay)
         Show createEntity = new Show.Builder()
-                .name("gavin")
+                .name("lala")
                 .day(day)
                 .build();
         Show insertedEntity = repo.save(createEntity);
@@ -43,6 +43,7 @@ public class ShowRepoTest extends AndroidTestCase {
         Show updateEntity = new Show.Builder()
                 .copy(entity)
                 .name("tommy")
+                .day(day)
                 .build();
         repo.update(updateEntity);
         Show newEntity = repo.findById(id);

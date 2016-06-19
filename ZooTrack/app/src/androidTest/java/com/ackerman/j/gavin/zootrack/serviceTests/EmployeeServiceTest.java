@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.test.AndroidTestCase;
 
+import com.ackerman.j.gavin.zootrack.Config.DbConstants.GlobalContext;
 import com.ackerman.j.gavin.zootrack.Domain.Animal;
 import com.ackerman.j.gavin.zootrack.Domain.Employee;
 import com.ackerman.j.gavin.zootrack.services.Impl.EmployeeServiceImpl;
@@ -27,9 +28,13 @@ public class EmployeeServiceTest extends AndroidTestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Intent intent = new Intent(this.getContext(), EmployeeServiceImpl.class);
-        this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        //Create
+       // Intent intent = new Intent(this.getContext(), EmployeeServiceImpl.class);
+      //  this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        Intent intent = new Intent(this.getContext(),EmployeeServiceImpl.class);
+        GlobalContext.context = this.getContext();
+        employeeService = EmployeeServiceImpl.getInstance();
+        GlobalContext.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        // /Create
         employee = new Employee.Builder()
                 .name("Alec")
                 .surname("James")
@@ -61,11 +66,11 @@ public class EmployeeServiceTest extends AndroidTestCase {
     {
         employee = new Employee.Builder()
                 .name("Alec")
-                .surname("James")
+                .surname("LAUNTER")
                 .age(34)
                 .Country("SA")
-                .password("w32352d")
-                .email("blah@gmail.com")
+                .password("w32352d23CC")
+                .email("23blXah54@gmail.com")
                 .build();
         employeeService.addEmployee(employee);
         boolean authentic = employeeService.isAuthentic(employee.getEmail(),employee.getPassword());

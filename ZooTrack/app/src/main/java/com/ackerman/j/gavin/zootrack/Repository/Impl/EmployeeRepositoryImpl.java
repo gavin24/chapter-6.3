@@ -36,10 +36,10 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
             + COLUMN_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_SURNAME + " TEXT UNIQUE NOT NULL , "
+            + COLUMN_SURNAME + " TEXT NOT NULL , "
             + COLUMN_AGE + " INTEGER  NOT NULL, "
             + COLUMN_COUNTRY + " TEXT  NOT NULL , "
-            + COLUMN_PASSWORD + " TEXT UNIQUE  NOT NULL, "
+            + COLUMN_PASSWORD + " TEXT NOT NULL, "
             + COLUMN_EMAIL + " TEXT UNIQUE  NOT NULL , "
             + COLUMN_NAME + " TEXT NOT NULL );";
 

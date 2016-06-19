@@ -21,7 +21,7 @@ public class FoodRepoTest extends AndroidTestCase {
         FoodRepository repo = new FoodRepositoryImpl(this.getContext());
         // CREATE  price(price).name(name).type(type)
         Food createEntity = new Food.Builder()
-                .name("Chicken")
+                .name("beef")
                 .type("Meat")
                 .price(500)
                 .stock(30)
